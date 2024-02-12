@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
 	return (
-		<main className="h-svh bg-[url('../../public/bg.jpg')] bg-no-repeat bg-cover flex justify-center">
+		<main className="h-full bg-[url('../../public/bg.jpg')] bg-no-repeat bg-cover flex justify-center">
 			<nav className="absolute w-full flex items-center justify-between px-4 py-2 xl:px-">
 				<Image
 					src="/logo.svg"
