@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
 	return (
-		<main className="h-svh bg-[url('../../public/bg.jpg')] bg-no-repeat bg-cover">
-			<nav className="flex items-center justify-between px-4 py-2 xl:px-8">
+		<main className="h-svh bg-[url('../../public/bg.jpg')] bg-no-repeat bg-cover flex justify-center">
+			<nav className="absolute w-full flex items-center justify-between px-4 py-2 xl:px-">
 				<Image
 					src="/logo.svg"
 					width={40}
@@ -15,7 +15,7 @@ export default function Home() {
 					Cadastrar-se
 				</button>
 			</nav>
-			<div className="h-svh w-svw flex flex-col items-center justify-center">
+			<div className="flex flex-col items-center justify-center">
 				<form
 					action=""
 					className="bg-white rounded-lg px-6 py-8 lg:px-10 lg:py-12"
