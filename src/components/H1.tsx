@@ -6,5 +6,5 @@ interface H1Props {
 }
 
 export const H1: React.FC<H1Props> = ({ text, className }) => {
-	return <h1 className={`text-2xl font-bold ${className}`}>{text}</h1>;
+	return <h1 className={`md:text-2xl font-bold ${className}`}>{text}</h1>;
 };
