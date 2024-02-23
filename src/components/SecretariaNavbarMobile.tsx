@@ -35,7 +35,7 @@ export const SecretariaNavbarMobile = () => {
 				className={`flex flex-col fixed py-16 z-10 bg-[#0055D4] top-0 ${menu ? "left-0" : "-left-80"} transition-all lg:hidden gap-8 text-white rounded px-4 md:px-8 h-full text-xs md:text-base xl:text-xl font-inter font-semibold`}
 			>
 				<Link
-					href="/"
+					href="/dashboard/members"
 					className="flex gap-2 items-center hover:scale-110 transition-all"
 				>
 					<Image
