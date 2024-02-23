@@ -3,11 +3,18 @@ import { useAuth } from "@/app/context/AuthContext";
 import { Button } from "@/components/Button";
 import { H1 } from "@/components/H1";
 import { MainNav } from "@/components/Main-nav";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+interface Member {
+	name: string;
+	memberPhoto: string;
+	email: string;
+}
 
 export default function page() {
 	const { token } = useAuth();
-	const [members, setMembers] = useState([]);
+	const [members, setMembers] = useState<Member[]>([]);
 
 	useEffect(() => {
 		fetch("http://localhost:3001/api/members/get-all-members/", {
@@ -26,8 +33,6 @@ export default function page() {
 			});
 	}, [token]);
 
-	console.log(members);
-
 	return (
 		<>
 			<MainNav />
@@ -36,41 +41,38 @@ export default function page() {
 				<H1 text="Gestão de membros (89)" />
 				<div className="flex max-w-full rounded-[32px] overflow-hidden">
 					<div className="grid grid-cols-6 w-[4000px]">
-						<div className="flex flex-col gap-4">
+						<div className="flex flex-col w-fit">
 							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
 								Nome
 							</h1>
-							<div></div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
-								Nascimento
-							</h1>
-							<div></div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
-								Sexo
-							</h1>
-							<div></div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
-								Telefone
-							</h1>
-							<div></div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
-								Estado Civil
-							</h1>
-							<div></div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<h1 className="text-center bg-[#0055D4] text-white font-medium py-2">
-								Batismo
-							</h1>
-							<div></div>
+							{members.length > 0 ? (
+								members.map((member, index) => (
+									<div
+										key={index}
+										className={`${index % 2 == 0 ? "bg-[#002D70]" : "bg-[#0055D4]"} flex items-center gap-4 w-full px-8 py-4`}
+									>
+										<div className="w-16 h-16 rounded-full overflow-hidden flex items-center">
+											<Image
+												src={member.memberPhoto}
+												width={80}
+												height={80}
+												alt={`Foto do membro ${member.name}`}
+												className=""
+											/>
+										</div>
+										<p className="text-white flex flex-col">
+											{member.name.length > 20
+												? `${member.name.substring(0, 20)}...`
+												: member.name}
+											<span className="text-[#BEBEBE] text-xs">
+												{member.email}
+											</span>
+										</p>
+									</div>
+								))
+							) : (
+								<p>Nenhum membro encontrado.</p>
+							)}
 						</div>
 					</div>
 				</div>
