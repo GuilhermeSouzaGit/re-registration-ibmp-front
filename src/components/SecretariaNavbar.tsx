@@ -17,7 +17,7 @@ export const SecretariaNavbar = () => {
 			/>
 			<ul className="hidden lg:flex gap-8 text-white rounded px-3 py-1 xl:px-6 xl:py-2 xl:text-xl font-inter font-semibold">
 				<Link
-					href="/"
+					href="/dashboard/members"
 					className="flex gap-2 hover:scale-110 transition-all"
 				>
 					<Image
