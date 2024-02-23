@@ -19,10 +19,7 @@ export default function page() {
 		<>
 			<MainNav />
 			<div className="flex flex-col gap-8 p-4 md:p-8 xl:p-16">
-				<H1
-					className="text-[#002D70]"
-					text={`Painel Administrativo (${whichRole()})`}
-				></H1>
+				<H1 text={`Painel Administrativo (${whichRole()})`}></H1>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
 					<div className="flex flex-col items-center text-center p-4 text-white bg-[#0055D4] rounded-2xl font-bold w-full">
 						<p className="text-[#BEBEBE] md:text-2xl">
