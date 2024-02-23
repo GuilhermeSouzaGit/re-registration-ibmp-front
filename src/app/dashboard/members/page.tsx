@@ -22,7 +22,7 @@ export default function page() {
 	const [members, setMembers] = useState<Member[]>([]);
 
 	useEffect(() => {
-		fetch("http://localhost:3001/api/members/get-all-members/", {
+		fetch("https://re-registration-ibmp-back.onrender.com/api/members/get-all-members/", {
 			method: "GET",
 			headers: {
 				"Content-type": "application/json",
