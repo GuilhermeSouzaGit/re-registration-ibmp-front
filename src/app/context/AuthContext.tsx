@@ -12,11 +12,6 @@ interface AuthContextType {
 	role: string | null;
 	login: (token: string, userId: string, role: string) => Promise<void>;
 	logout: () => void;
-	isAuth: () => {
-		userToken: string | null;
-		userId: string | null;
-		role: string | null;
-	};
 }
 
 interface AuthProviderProps {
@@ -29,7 +24,6 @@ const AuthContext = createContext<AuthContextType>({
 	role: null,
 	login: async () => {},
 	logout: () => {},
-	isAuth: () => ({ userToken: null, userId: null, role: null }),
 });
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
@@ -66,17 +60,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		localStorage.removeItem("role");
 	};
 
-	const isAuth = () => {
-		const userToken = localStorage.getItem("token");
-		const userId = localStorage.getItem("user");
-		const role = localStorage.getItem("role");
-		return { userToken, userId, role };
-	};
-
 	return (
-		<AuthContext.Provider
-			value={{ token, user, role, login, logout, isAuth }}
-		>
+		<AuthContext.Provider value={{ token, user, role, login, logout }}>
 			{children}
 		</AuthContext.Provider>
 	);

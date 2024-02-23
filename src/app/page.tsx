@@ -15,19 +15,16 @@ export default function Home() {
 		const email = emailRef.current?.value;
 		const password = passwordRef.current?.value;
 
-		fetch(
-			"https://re-registration-ibmp-back.onrender.com/api/user/login/",
-			{
-				method: "POST",
-				headers: {
-					"Content-type": "application/json",
-				},
-				body: JSON.stringify({
-					email: email,
-					password: password,
-				}),
+		fetch("http://localhost:3001/api/user/login/", {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json",
 			},
-		)
+			body: JSON.stringify({
+				email: email,
+				password: password,
+			}),
+		})
 			.then((res) => {
 				const status = res.status;
 				return res.json().then((data) => ({ status, data }));
